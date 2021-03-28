@@ -10,7 +10,7 @@ export default function Game() {
   const [genres, setGenres] = useState([]);
   const [studios, setStudios] = useState([]);
   const [platforms, setPlatforms] = useState([]);
-
+  const [directors,setDirectors]=useState([]);
   const [games,setGames]=useState([]);
  
   useEffect(() => {
@@ -49,17 +49,26 @@ export default function Game() {
     getData();
   }, [refresh]);
 
+  useEffect(() => {
+    const getData = async () => {
+      const data = await fetch('./api/studio/directors');
+      const read = await data.json();
+      setDirectors(read);
+    };
+    getData();
+  }, [refresh]);
+
   return (
     <div style={{ padding: '10px' }}>
       
       <div className={styles.boxWithShadow} style={{ marginBottom: '20px' }}>
-        <CreateGame platforms={platforms} studios={studios} genres={genres} setRefresh={setRefresh}/>
+        <CreateGame platforms={platforms} directors={directors} studios={studios} genres={genres} setRefresh={setRefresh}/>
       </div>
       <div className={styles.boxWithShadow}  style={{ marginBottom: '20px' }}>
         <DeleteGame setRefresh={setRefresh} games={games} />
       </div>
       <div className={styles.boxWithShadow}  style={{ marginBottom: '20px' }}>
-        <UpdateGenre setRefresh={setRefresh} platforms={platforms} studios={studios} genres={genres} games={games} />
+        <UpdateGenre setRefresh={setRefresh} platforms={platforms} directors={directors} studios={studios} genres={genres} games={games} />
       </div>
       <div className={styles.boxWithShadow}  style={{ marginBottom: '20px'}}>
         

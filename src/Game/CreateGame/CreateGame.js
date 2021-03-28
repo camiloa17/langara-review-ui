@@ -5,6 +5,7 @@ export default function CreateGame(props) {
   const [gameName, setGameName] = useState('');
   const [genre, setGenre] = useState('');
   const [studio, setStudio] = useState('');
+ const [director,setDirector]= useState('');
   const [platform, setPlatform] = useState([]);
   const [coverUrl,setCoverUrl]=useState('');
   const [numberOfPlayers, setNumberOfPlayers] = useState(0);
@@ -19,6 +20,7 @@ export default function CreateGame(props) {
       gameName.length > 1 &&
       genre.length > 1 &&
       studio.length > 1 &&
+      director.length>1 &&
       platform.length > 0 &&
       numberOfPlayers > 0 &&
       budget > 0 &&
@@ -31,6 +33,7 @@ export default function CreateGame(props) {
         numberOfPlayers: numberOfPlayers,
         budget: budget,
         gameStudio: studio,
+        director:director,
         cover:coverUrl,
         minRequirements: minReq,
         platform: platform,
@@ -99,6 +102,19 @@ export default function CreateGame(props) {
               <option></option>
               {props.studios.map((studio) => (
                 <option key={studio.studioname}>{studio.studioname}</option>
+              ))}
+            </Form.Control>
+          </Form.Group>
+          <Form.Group>
+            <Form.Label>Director</Form.Label>
+            <Form.Control
+              as='select'
+              value={director}
+              onChange={(e) => setDirector(e.target.value)}
+            >
+              <option></option>
+              {props.directors.map((director) => (
+                <option key={director.directorname} value={director.directorname}>{`${director.directorname} [${director.gameStudio}]`}</option>
               ))}
             </Form.Control>
           </Form.Group>

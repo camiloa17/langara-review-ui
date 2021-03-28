@@ -47,6 +47,12 @@ export default function ReadGame(props) {
                   </Card.Text>
                   <Card.Text style={{ color: '#212529' }}>
                     <>
+                      <strong>Director: </strong>
+                      {game.studioDirector}
+                    </>
+                  </Card.Text>
+                  <Card.Text style={{ color: '#212529' }}>
+                    <>
                       <strong>Min Req: </strong>
                       {game.minRequirements}
                     </>

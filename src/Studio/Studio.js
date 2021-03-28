@@ -3,6 +3,7 @@ import ReadStudios from './ReadStudio/ReadStudios';
 import CreateStudio from './CreateStudio/CreateStudio';
 import DeleteStudio from './DeleteStudio/DeleteStudio';
 import UpdateStudio from './UpdateStudio/UpdateStudio';
+import AddDirector from './AddDirector/AddDirector';
 import styles from '../SharedComponents/Styles/sharedStyles.module.css';
 export default function Studio() {
   
@@ -34,6 +35,9 @@ export default function Studio() {
       </div>
       <div className={styles.boxWithShadow}  style={{ marginBottom: '20px' }}>
         <UpdateStudio setRefresh={setRefresh} studios={studios} />
+      </div>
+      <div>
+      <AddDirector setRefresh={setRefresh} studios={studios} />
       </div>
     </div>
   );

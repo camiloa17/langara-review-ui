@@ -26,6 +26,7 @@ export default function ReviewPage() {
               <div>
                 <h5>{review.gamename}</h5>
                 <p><strong>Studio: </strong>{review.gameStudio}</p>
+                <p><strong>Director: </strong>{review.studioDirector}</p>
                 <p><strong>Genre: </strong>{review.genre}</p>
               </div>
               <div>
