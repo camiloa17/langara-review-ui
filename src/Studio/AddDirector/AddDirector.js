@@ -7,7 +7,7 @@ export default function AddDirector(props) {
 
   const onSubmitUpdate = async (e) => {
     e.preventDefault();
-    if (studioToAddDirector.length > 1) {
+    if (studioToAddDirector.length > 1 && directorname.length>1) {
       const submit = await fetch(`./api/studio/director/${studioToAddDirector}`, {
         method: 'post',
         headers: {
