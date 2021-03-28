@@ -36,7 +36,7 @@ export default function Studio() {
       <div className={styles.boxWithShadow}  style={{ marginBottom: '20px' }}>
         <UpdateStudio setRefresh={setRefresh} studios={studios} />
       </div>
-      <div>
+      <div className={styles.boxWithShadow}  style={{ marginBottom: '20px' }}>
       <AddDirector setRefresh={setRefresh} studios={studios} />
       </div>
     </div>
