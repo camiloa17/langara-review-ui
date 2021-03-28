@@ -23,7 +23,7 @@ export default function UpdateGame(props) {
       setGenre(game.genre);
       setStudio(game.gameStudio);
       setDirector(game.studioDirector)
-      setPlatform(game.platforms.replaceAll(' ', '').split(','));
+      setPlatform(game.platforms.split(','));
       setCoverUrl(game.cover);
       setNumberOfPlayers(game.numberOfPLayers);
       setBudget(game.budget);

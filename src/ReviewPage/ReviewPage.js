@@ -30,6 +30,7 @@ export default function ReviewPage() {
                 <p><strong>Genre: </strong>{review.genre}</p>
               </div>
               <div>
+              <p><strong>Platforms: </strong>{review.platforms}</p>
                 <p><strong>No. players: </strong>{review.numberOfPlayers}</p>
                 <p><strong>Rating: </strong>{review.reviewerrating}</p>
               </div>
