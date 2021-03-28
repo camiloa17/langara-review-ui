@@ -8,7 +8,8 @@ export default function Platform() {
   
   const [refresh, setRefresh] = useState({});
   const [platforms, setPlatforms] = useState([]);
-
+  const [maxPlatforms,setMaxPlatforms]=useState([]);
+  const [gamesPerPlatform,setGamesPerPlatform]=useState([]);
   
  
   useEffect(() => {
@@ -20,11 +21,29 @@ export default function Platform() {
     getData();
   }, [refresh]);
 
+  useEffect(() => {
+    const getData = async () => {
+      const data = await fetch('./api/platform/maxplatform');
+      const read = await data.json();
+      setMaxPlatforms(read);
+    };
+    getData();
+  }, []);
+
+  useEffect(() => {
+    const getData = async () => {
+      const data = await fetch('./api/platform/numberofgames');
+      const read = await data.json();
+      setGamesPerPlatform(read);
+    };
+    getData();
+  }, []);
+
 
   return (
     <div style={{ padding: '10px' }}>
       <div className={styles.boxWithShadow} style={{ marginBottom: '20px' }}>
-        <ReadPlatform platforms={platforms} />
+        <ReadPlatform platforms={platforms} maxPlat={maxPlatforms} gamesPerplat={gamesPerPlatform} />
       </div>
       <div className={styles.boxWithShadow} style={{ marginBottom: '20px' }}>
         <CreatePlatform setRefresh={setRefresh}/>

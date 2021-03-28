@@ -18,6 +18,38 @@ export default function ReadPlatform(props){
             </Badge>
           ))}
         </div>
+        <div style={{marginTop:'10px'}}>
+        <h4>Platform with max games</h4>
+        <div>
+          {props.maxPlat.map((plat)=>(
+            <Badge
+            style={{ marginRight: '5px' }}
+            pill
+            variant='secondary'
+            key={plat.platformName}
+          >
+            {`${plat.platform} [${plat.number}]`}
+          </Badge>
+          ))}
+        </div>
+
+        </div>
+        <div  style={{marginTop:'10px'}}>
+        <h4>Number of games per platform</h4>
+        <div>
+          {props.gamesPerplat.map((plat)=>(
+            <Badge
+            style={{ marginRight: '5px' }}
+            pill
+            variant='secondary'
+            key={plat.platformName}
+          >
+            {`${plat.platform} [${plat.number}]`}
+          </Badge>
+          ))}
+        </div>
+
+        </div>
       </div>
         </>
     )
