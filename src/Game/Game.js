@@ -3,6 +3,7 @@ import ReadGame from './ReadGame/ReadGame';
 import CreateGame from './CreateGame/CreateGame';
 import DeleteGame from './DeleteGame/DeleteGame';
 import UpdateGenre from './UpdateGame/UpdateGame';
+import GameAllPlatforms from './GameAllPlatforms/GameAllPlatforms';
 import styles from '../SharedComponents/Styles/sharedStyles.module.css';
 export default function Game() {
   
@@ -12,6 +13,7 @@ export default function Game() {
   const [platforms, setPlatforms] = useState([]);
   const [directors,setDirectors]=useState([]);
   const [games,setGames]=useState([]);
+  const [gamesAllPlatforms,setGamesAllPlatforms]=useState([]);
  
   useEffect(() => {
     const getData = async () => {
@@ -51,12 +53,21 @@ export default function Game() {
 
   useEffect(() => {
     const getData = async () => {
+      const data = await fetch('./api/game/gamesplatforms');
+      const read = await data.json();
+      setGamesAllPlatforms(read);
+    };
+    getData();
+  }, [refresh]);
+
+  useEffect(() => {
+    const getData = async () => {
       const data = await fetch('./api/studio/directors');
       const read = await data.json();
       setDirectors(read);
     };
     getData();
-  }, [refresh]);
+  }, []);
 
   return (
     <div style={{ padding: '10px' }}>
@@ -71,9 +82,10 @@ export default function Game() {
         <UpdateGenre setRefresh={setRefresh} platforms={platforms} directors={directors} studios={studios} genres={genres} games={games} />
       </div>
       <div className={styles.boxWithShadow}  style={{ marginBottom: '20px'}}>
-        
+          <GameAllPlatforms games={gamesAllPlatforms} />
+      </div>
+      <div className={styles.boxWithShadow}  style={{ marginBottom: '20px'}}>
           <ReadGame games={games} />
-        
       </div>
     </div>
   );

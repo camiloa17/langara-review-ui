@@ -32,7 +32,7 @@ export default function UpdateGame(props) {
       const year = gamedate.getFullYear();
       const month = gamedate.getMonth() + 1;
       const date = gamedate.getDate();
-      setDateCreated(`${year}-${month < 10 ? '0' + month : month}-${date}`);
+      setDateCreated(`${year}-${month < 10 ? '0' + month : month}-${date<10? '0'+ date:date}`);
     }
   }, [gameToEdit, props.games]);
 
