@@ -23,6 +23,9 @@ export default function GameAllPlatforms(props){
         <h4>
          {`Number of directors who directed a game: ${props.directorsDirecting[0]?.directors} `}
         </h4>
+        <h4>
+         {`Number of games made by studios: ${props.studioMadeGames[0]?.studios} `}
+        </h4>
         </div>
       </div>
         </>

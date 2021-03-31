@@ -6,15 +6,16 @@ import UpdateGenre from './UpdateGame/UpdateGame';
 import GameAllPlatforms from './GameAllPlatforms/GameAllPlatforms';
 import styles from '../SharedComponents/Styles/sharedStyles.module.css';
 export default function Game() {
-  
   const [refresh, setRefresh] = useState({});
   const [genres, setGenres] = useState([]);
   const [studios, setStudios] = useState([]);
   const [platforms, setPlatforms] = useState([]);
-  const [directors,setDirectors]=useState([]);
-  const [games,setGames]=useState([]);
-  const [gamesAllPlatforms,setGamesAllPlatforms]=useState([]);
-  const [directorsDirecting,setDirectorsDirecting]=useState([]);
+  const [directors, setDirectors] = useState([]);
+  const [games, setGames] = useState([]);
+  const [gamesAllPlatforms, setGamesAllPlatforms] = useState([]);
+  const [directorsDirecting, setDirectorsDirecting] = useState([]);
+  const [studioMadeGames, setStudioMadeGames] = useState([]);
+
   useEffect(() => {
     const getData = async () => {
       const data = await fetch('./api/genre/');
@@ -77,23 +78,48 @@ export default function Game() {
     getData();
   }, [refresh]);
 
+  useEffect(() => {
+    const getData = async () => {
+      const data = await fetch('./api/studio/madegames');
+      const read = await data.json();
+      setStudioMadeGames(read);
+    };
+    getData();
+  }, [refresh]);
+
   return (
     <div style={{ padding: '10px' }}>
-      
       <div className={styles.boxWithShadow} style={{ marginBottom: '20px' }}>
-        <CreateGame platforms={platforms} directors={directors} studios={studios} genres={genres} setRefresh={setRefresh}/>
+        <CreateGame
+          platforms={platforms}
+          directors={directors}
+          studios={studios}
+          genres={genres}
+          setRefresh={setRefresh}
+        />
       </div>
-      <div className={styles.boxWithShadow}  style={{ marginBottom: '20px' }}>
+      <div className={styles.boxWithShadow} style={{ marginBottom: '20px' }}>
         <DeleteGame setRefresh={setRefresh} games={games} />
       </div>
-      <div className={styles.boxWithShadow}  style={{ marginBottom: '20px' }}>
-        <UpdateGenre setRefresh={setRefresh} platforms={platforms} directors={directors} studios={studios} genres={genres} games={games} />
+      <div className={styles.boxWithShadow} style={{ marginBottom: '20px' }}>
+        <UpdateGenre
+          setRefresh={setRefresh}
+          platforms={platforms}
+          directors={directors}
+          studios={studios}
+          genres={genres}
+          games={games}
+        />
       </div>
-      <div className={styles.boxWithShadow}  style={{ marginBottom: '20px'}}>
-          <GameAllPlatforms games={gamesAllPlatforms} directorsDirecting={directorsDirecting} />
+      <div className={styles.boxWithShadow} style={{ marginBottom: '20px' }}>
+        <GameAllPlatforms
+          games={gamesAllPlatforms}
+          directorsDirecting={directorsDirecting}
+          studioMadeGames={studioMadeGames}
+        />
       </div>
-      <div className={styles.boxWithShadow}  style={{ marginBottom: '20px'}}>
-          <ReadGame games={games} />
+      <div className={styles.boxWithShadow} style={{ marginBottom: '20px' }}>
+        <ReadGame games={games} />
       </div>
     </div>
   );
