@@ -26,7 +26,7 @@ export default function ReadPlatform(props){
             style={{ marginRight: '5px' }}
             pill
             variant='secondary'
-            key={plat.platformName}
+            key={plat.platform}
           >
             {`${plat.platform} [${plat.number}]`}
           </Badge>
@@ -42,7 +42,7 @@ export default function ReadPlatform(props){
             style={{ marginRight: '5px' }}
             pill
             variant='secondary'
-            key={plat.platformName}
+            key={plat.platform}
           >
             {`${plat.platform} [${plat.number}]`}
           </Badge>

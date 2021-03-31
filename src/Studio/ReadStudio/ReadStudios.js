@@ -1,10 +1,9 @@
 import { Badge } from 'react-bootstrap';
 
-export default function ReadStudios(props){
-
-    return(
-        <>
-        <div style={{ marginBottom: '20px' }}>
+export default function ReadStudios(props) {
+  return (
+    <>
+      <div style={{ marginBottom: '20px' }}>
         <h2>Current Studios</h2>
         <div style={{ padding: '5px' }}>
           {props.studios.map((studio) => (
@@ -19,7 +18,6 @@ export default function ReadStudios(props){
           ))}
         </div>
       </div>
-        </>
-    )
-
+    </>
+  );
 }

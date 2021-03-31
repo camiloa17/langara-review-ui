@@ -14,7 +14,7 @@ export default function Game() {
   const [directors,setDirectors]=useState([]);
   const [games,setGames]=useState([]);
   const [gamesAllPlatforms,setGamesAllPlatforms]=useState([]);
- 
+  const [directorsDirecting,setDirectorsDirecting]=useState([]);
   useEffect(() => {
     const getData = async () => {
       const data = await fetch('./api/genre/');
@@ -68,6 +68,14 @@ export default function Game() {
     };
     getData();
   }, []);
+  useEffect(() => {
+    const getData = async () => {
+      const data = await fetch('./api/studio/directors/directing');
+      const read = await data.json();
+      setDirectorsDirecting(read);
+    };
+    getData();
+  }, [refresh]);
 
   return (
     <div style={{ padding: '10px' }}>
@@ -82,7 +90,7 @@ export default function Game() {
         <UpdateGenre setRefresh={setRefresh} platforms={platforms} directors={directors} studios={studios} genres={genres} games={games} />
       </div>
       <div className={styles.boxWithShadow}  style={{ marginBottom: '20px'}}>
-          <GameAllPlatforms games={gamesAllPlatforms} />
+          <GameAllPlatforms games={gamesAllPlatforms} directorsDirecting={directorsDirecting} />
       </div>
       <div className={styles.boxWithShadow}  style={{ marginBottom: '20px'}}>
           <ReadGame games={games} />
